@@ -1,0 +1,114 @@
+﻿{
+    "@{DomainName=lab.test; DomainController=Microsoft.ActiveDirectory.Management.ADPropertyValueCollection; TotalOUs=9; TotalUsers=11; TotalGroups=54; TotalComputers=3; GeneratedDate=2026.08.18 10:17:44}":  {
+                                                                                                                                                                                                                    "DomainName":  "lab.test",
+                                                                                                                                                                                                                    "DomainController":  [
+                                                                                                                                                                                                                                             "DC01.lab.test"
+                                                                                                                                                                                                                                         ],
+                                                                                                                                                                                                                    "TotalOUs":  9,
+                                                                                                                                                                                                                    "TotalUsers":  11,
+                                                                                                                                                                                                                    "TotalGroups":  54,
+                                                                                                                                                                                                                    "TotalComputers":  3,
+                                                                                                                                                                                                                    "GeneratedDate":  "2026.08.18 10:17:44"
+                                                                                                                                                                                                                },
+    "Users":  [
+                  {
+                      "SamAccountName":  "Administrator",
+                      "DisplayName":  "Administrator",
+                      "Department":  "BelirtilmemiÅŸ",
+                      "OU":  "OU=Users2,DC=lab,DC=test",
+                      "Enabled":  true,
+                      "LastLogOn":  "2026-08-17 10:49:16",
+                      "GroupMembership":  "Group Policy Creator Owners; Domain Admins; Enterprise Admins; Schema Admins; Administrators"
+                  },
+                  {
+                      "SamAccountName":  "Guest",
+                      "DisplayName":  "Guest",
+                      "Department":  "BelirtilmemiÅŸ",
+                      "OU":  "OU=Users2,DC=lab,DC=test",
+                      "Enabled":  false,
+                      "LastLogOn":  "HiÃ§ GiriÅŸ YapÄ±lmadÄ±",
+                      "GroupMembership":  "Guests"
+                  },
+                  {
+                      "SamAccountName":  "msi-nb",
+                      "DisplayName":  "msi-nb",
+                      "Department":  "BelirtilmemiÅŸ",
+                      "OU":  "OU=Users2,DC=lab,DC=test",
+                      "Enabled":  true,
+                      "LastLogOn":  "2026-08-17 09:06:59",
+                      "GroupMembership":  "Users; Administrators"
+                  },
+                  {
+                      "SamAccountName":  "krbtgt",
+                      "DisplayName":  "krbtgt",
+                      "Department":  "BelirtilmemiÅŸ",
+                      "OU":  "KÃ¶k Dizin (CN=Users vb.)",
+                      "Enabled":  false,
+                      "LastLogOn":  "HiÃ§ GiriÅŸ YapÄ±lmadÄ±",
+                      "GroupMembership":  "Denied RODC Password Replication Group"
+                  },
+                  {
+                      "SamAccountName":  "AhmetYildiz",
+                      "DisplayName":  "Ahmet Yildiz",
+                      "Department":  "BelirtilmemiÅŸ",
+                      "OU":  "OU=IT,OU=Users2,DC=lab,DC=test",
+                      "Enabled":  true,
+                      "LastLogOn":  "HiÃ§ GiriÅŸ YapÄ±lmadÄ±",
+                      "GroupMembership":  "G_IT_Users"
+                  },
+                  {
+                      "SamAccountName":  "MehmetYilmaz",
+                      "DisplayName":  "Mehmet Yilmaz",
+                      "Department":  "BelirtilmemiÅŸ",
+                      "OU":  "OU=IT,OU=Users2,DC=lab,DC=test",
+                      "Enabled":  true,
+                      "LastLogOn":  "HiÃ§ GiriÅŸ YapÄ±lmadÄ±",
+                      "GroupMembership":  "G_IT_Users"
+                  },
+                  {
+                      "SamAccountName":  "MuratMuhasebe",
+                      "DisplayName":  "Murat Muhasebe",
+                      "Department":  "BelirtilmemiÅŸ",
+                      "OU":  "OU=Muhasebe,OU=Users2,DC=lab,DC=test",
+                      "Enabled":  true,
+                      "LastLogOn":  "HiÃ§ GiriÅŸ YapÄ±lmadÄ±",
+                      "GroupMembership":  "G_Muhasebe_Users"
+                  },
+                  {
+                      "SamAccountName":  "AliHR",
+                      "DisplayName":  "Ali HR",
+                      "Department":  "BelirtilmemiÅŸ",
+                      "OU":  "OU=HR,OU=Users2,DC=lab,DC=test",
+                      "Enabled":  true,
+                      "LastLogOn":  "HiÃ§ GiriÅŸ YapÄ±lmadÄ±",
+                      "GroupMembership":  "G_HR_Users"
+                  },
+                  {
+                      "SamAccountName":  "mehmet.hr",
+                      "DisplayName":  "Mehmet HR",
+                      "Department":  "BelirtilmemiÅŸ",
+                      "OU":  "OU=HR,OU=Users2,DC=lab,DC=test",
+                      "Enabled":  true,
+                      "LastLogOn":  "2026-08-17 15:22:24",
+                      "GroupMembership":  "G_HR_Users"
+                  },
+                  {
+                      "SamAccountName":  "deneme.muhasebe",
+                      "DisplayName":  "Deneme Muhasebe",
+                      "Department":  "BelirtilmemiÅŸ",
+                      "OU":  "OU=Muhasebe,OU=Users2,DC=lab,DC=test",
+                      "Enabled":  true,
+                      "LastLogOn":  "HiÃ§ GiriÅŸ YapÄ±lmadÄ±",
+                      "GroupMembership":  "G_Muhasebe_Users"
+                  },
+                  {
+                      "SamAccountName":  "Test.1",
+                      "DisplayName":  "Test 1",
+                      "Department":  "BelirtilmemiÅŸ",
+                      "OU":  "OU=Test,OU=Users2,DC=lab,DC=test",
+                      "Enabled":  true,
+                      "LastLogOn":  "2026-08-17 15:50:29",
+                      "GroupMembership":  "Yok"
+                  }
+              ]
+}

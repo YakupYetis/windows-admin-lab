@@ -1,0 +1,23 @@
+﻿{
+    "ComputerName":  "CL01",
+    "OperatingSystem":  "Microsoft Windows 11 Enterprise Evaluation",
+    "OSVersion":  "10.0.26200",
+    "LastBootTime":  "\/Date(1786724183500)\/",
+    "IPAdresses":  "10.30.0.20",
+    "ActiveAdapters":  "Ethernet0",
+    "CPU":  [
+                "11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz",
+                "11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz"
+            ],
+    "TotalRAM_GB":  4,
+    "UsedRam_GB":  2.36,
+    "FreeRam_GB":  1.64,
+    "Disks":  {
+                  "DriveLetter":  "C:",
+                  "TotalSizeGB":  79.07,
+                  "FreeSpaceGB":  56.96,
+                  "UsedSpaceGB":  22.11
+              },
+    "RunningervicesCount":  95,
+    "RebootRequired":  false
+}

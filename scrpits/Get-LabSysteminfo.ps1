@@ -38,7 +38,7 @@ if ((Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based 
     <# Action to perform if the condition is true #>
 }
 
-$runningServicesCount = (Get-Service | Where-Object Status -eq 'Running'.Count)
+$runningServicesCount = @(Get-Service | Where-Object {$_.Status -eq 'Running'}).Count
 
 $systemData = [PSCustomObject]@{
     ComputerName = $env:COMPUTERNAME

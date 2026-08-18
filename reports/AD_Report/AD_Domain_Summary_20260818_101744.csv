@@ -1,0 +1,2 @@
+﻿"DomainName","DomainController","TotalOUs","TotalUsers","TotalGroups","TotalComputers","GeneratedDate"
+"lab.test","Microsoft.ActiveDirectory.Management.ADPropertyValueCollection","9","11","54","3","2026.08.18 10:17:44"
