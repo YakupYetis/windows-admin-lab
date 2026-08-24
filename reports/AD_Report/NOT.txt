@@ -1,1 +1,0 @@
-kazayla çıktı mesajlarını Türkçe karakterlerle yazdığım için çıktılar bozuk görünüyor

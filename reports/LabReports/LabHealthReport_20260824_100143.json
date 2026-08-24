@@ -1,0 +1,44 @@
+﻿[
+    {
+        "Timestamp":  "2026-08-24 10:01:43",
+        "TestName":  "DC01 Erisilebilirligi",
+        "Status":  "PASS",
+        "Details":  "DC01 (10.30.0.10) aktif ve yanit veriyor."
+    },
+    {
+        "Timestamp":  "2026-08-24 10:01:43",
+        "TestName":  "SRV01 Erisilebilirligi",
+        "Status":  "PASS",
+        "Details":  "SRV01 (10.30.0.11) aktif ve yanit veriyor."
+    },
+    {
+        "Timestamp":  "2026-08-24 10:01:44",
+        "TestName":  "DNS lab.test Cozumlemesi",
+        "Status":  "PASS",
+        "Details":  "lab.test basariyla cozumlendi."
+    },
+    {
+        "Timestamp":  "2026-08-24 10:01:44",
+        "TestName":  "Active Directory Domain Erisimi",
+        "Status":  "FAIL",
+        "Details":  "Domain erisim hatasi: Exception calling \"GetComputerDomain\" with \"0\" argument(s): \"The user name or password is incorrect.\r\n\""
+    },
+    {
+        "Timestamp":  "2026-08-24 10:01:44",
+        "TestName":  "DHCP Servis Durumu",
+        "Status":  "PASS",
+        "Details":  "DHCP Server servisi calisiyor."
+    },
+    {
+        "Timestamp":  "2026-08-24 10:01:45",
+        "TestName":  "File Server Paylasim Erisimi",
+        "Status":  "PASS",
+        "Details":  "\\\\SRV01\\Shares paylasimina erisilebiliyor."
+    },
+    {
+        "Timestamp":  "2026-08-24 10:01:47",
+        "TestName":  "CL01 DHCP Lease Durumu",
+        "Status":  "PASS",
+        "Details":  "CL01 icin aktif IP kiralamasi bulundu (IP: 10.30.0.100)."
+    }
+]

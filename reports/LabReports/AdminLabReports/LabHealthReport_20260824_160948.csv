@@ -1,0 +1,8 @@
+﻿"Timestamp","TestName","Status","Details"
+"2026-08-24 16:09:48","DC01 Erisilebilirligi","PASS","DC01 (10.30.0.10) aktif ve yanit veriyor."
+"2026-08-24 16:09:48","SRV01 Erisilebilirligi","PASS","SRV01 (10.30.0.11) aktif ve yanit veriyor."
+"2026-08-24 16:09:49","DNS lab.test Cozumlemesi","PASS","lab.test basariyla cozumlendi."
+"2026-08-24 16:09:49","Active Directory Domain Erisimi","PASS","Domain aktif: lab.test"
+"2026-08-24 16:09:49","DHCP Servis Durumu","PASS","DHCP Server servisi calisiyor."
+"2026-08-24 16:09:49","File Server Paylasim Erisimi","PASS","\\SRV01\Shares paylasimina erisilebiliyor."
+"2026-08-24 16:09:52","CL01 DHCP Lease Durumu","PASS","CL01 icin aktif IP kiralamasi bulundu (IP: 10.30.0.100)."

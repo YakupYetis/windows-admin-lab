@@ -2,19 +2,19 @@
     "ComputerName":  "DC01",
     "OperatingSystem":  "Microsoft Windows Server 2025 Datacenter Evaluation",
     "OSVersion":  "10.0.26100",
-    "LastBootTime":  "\/Date(1786709482500)\/",
+    "LastBootTime":  "\/Date(1787119597500)\/",
     "IPAdresses":  "10.30.0.10",
     "ActiveAdapters":  "Ethernet0",
     "CPU":  "11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz",
-    "TotalRAM_GB":  2,
-    "UsedRam_GB":  1.53,
-    "FreeRam_GB":  0.47,
+    "TotalRAM_GB":  3.95,
+    "UsedRam_GB":  2.51,
+    "FreeRam_GB":  1.44,
     "Disks":  {
                   "DriveLetter":  "C:",
                   "TotalSizeGB":  58.34,
-                  "FreeSpaceGB":  42.61,
-                  "UsedSpaceGB":  15.73
+                  "FreeSpaceGB":  42.01,
+                  "UsedSpaceGB":  16.33
               },
-    "RunningervicesCount":  86,
+    "RunningServicesCount":  95,
     "RebootRequired":  false
 }

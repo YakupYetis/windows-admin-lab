@@ -1,2 +1,0 @@
-﻿"ComputerName","OperatingSystem","OSVersion","LastBootTime","ActiveAdapters","CPU","TotalRAM_GB","UsedRam_GB","FreeRam_GB","RebootRequired"
-"DC01","Microsoft Windows Server 2025 Datacenter Evaluation","10.0.26100","8/14/2026 3:11:22 PM","Ethernet0","11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz","2","1.53","0.47","False"

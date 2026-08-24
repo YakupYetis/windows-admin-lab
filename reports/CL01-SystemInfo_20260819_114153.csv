@@ -1,0 +1,2 @@
+﻿"ComputerName","OperatingSystem","OSVersion","LastBootTime","ActiveAdapters","CPU","TotalRAM_GB","UsedRam_GB","FreeRam_GB","RebootRequired"
+"CL01","Microsoft Windows 11 Enterprise Evaluation","10.0.26200","8/19/2026 9:06:41 AM","Ethernet0","11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz, 11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz","4","2.46","1.54","False"

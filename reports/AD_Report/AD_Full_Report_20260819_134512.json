@@ -1,0 +1,112 @@
+﻿{
+    "DomainSummary":  {
+                          "DomainName":  "lab.test",
+                          "DomainController":  "DC01.lab.test",
+                          "TotalOUs":  9,
+                          "TotalUsers":  11,
+                          "TotalGroups":  54,
+                          "TotalComputers":  3,
+                          "GeneratedDate":  "2026.08.19 13:45:12"
+                      },
+    "Users":  [
+                  {
+                      "SamAccountName":  "Administrator",
+                      "DisplayName":  "Administrator",
+                      "Department":  "Belirtilmemis",
+                      "OU":  "OU=Users2,DC=lab,DC=test",
+                      "Enabled":  true,
+                      "LastLogOn":  "2026-08-17 10:49:16",
+                      "GroupMembership":  "Group Policy Creator Owners; Domain Admins; Enterprise Admins; Schema Admins; Administrators"
+                  },
+                  {
+                      "SamAccountName":  "Guest",
+                      "DisplayName":  "Guest",
+                      "Department":  "Belirtilmemis",
+                      "OU":  "OU=Users2,DC=lab,DC=test",
+                      "Enabled":  false,
+                      "LastLogOn":  "Hic Giris Yapilmadi",
+                      "GroupMembership":  "Guests"
+                  },
+                  {
+                      "SamAccountName":  "msi-nb",
+                      "DisplayName":  "msi-nb",
+                      "Department":  "Belirtilmemis",
+                      "OU":  "OU=Users2,DC=lab,DC=test",
+                      "Enabled":  true,
+                      "LastLogOn":  "2026-08-17 09:06:59",
+                      "GroupMembership":  "Users; Administrators"
+                  },
+                  {
+                      "SamAccountName":  "krbtgt",
+                      "DisplayName":  "krbtgt",
+                      "Department":  "Belirtilmemis",
+                      "OU":  "Kok Dizin (CN=Users vb.)",
+                      "Enabled":  false,
+                      "LastLogOn":  "Hic Giris Yapilmadi",
+                      "GroupMembership":  "Denied RODC Password Replication Group"
+                  },
+                  {
+                      "SamAccountName":  "AhmetYildiz",
+                      "DisplayName":  "Ahmet Yildiz",
+                      "Department":  "Belirtilmemis",
+                      "OU":  "OU=IT,OU=Users2,DC=lab,DC=test",
+                      "Enabled":  true,
+                      "LastLogOn":  "Hic Giris Yapilmadi",
+                      "GroupMembership":  "G_IT_Users"
+                  },
+                  {
+                      "SamAccountName":  "MehmetYilmaz",
+                      "DisplayName":  "Mehmet Yilmaz",
+                      "Department":  "Belirtilmemis",
+                      "OU":  "OU=IT,OU=Users2,DC=lab,DC=test",
+                      "Enabled":  true,
+                      "LastLogOn":  "Hic Giris Yapilmadi",
+                      "GroupMembership":  "G_IT_Users"
+                  },
+                  {
+                      "SamAccountName":  "MuratMuhasebe",
+                      "DisplayName":  "Murat Muhasebe",
+                      "Department":  "Belirtilmemis",
+                      "OU":  "OU=Muhasebe,OU=Users2,DC=lab,DC=test",
+                      "Enabled":  true,
+                      "LastLogOn":  "Hic Giris Yapilmadi",
+                      "GroupMembership":  "G_Muhasebe_Users"
+                  },
+                  {
+                      "SamAccountName":  "AliHR",
+                      "DisplayName":  "Ali HR",
+                      "Department":  "Belirtilmemis",
+                      "OU":  "OU=HR,OU=Users2,DC=lab,DC=test",
+                      "Enabled":  true,
+                      "LastLogOn":  "Hic Giris Yapilmadi",
+                      "GroupMembership":  "G_HR_Users"
+                  },
+                  {
+                      "SamAccountName":  "mehmet.hr",
+                      "DisplayName":  "Mehmet HR",
+                      "Department":  "Belirtilmemis",
+                      "OU":  "OU=HR,OU=Users2,DC=lab,DC=test",
+                      "Enabled":  true,
+                      "LastLogOn":  "2026-08-17 15:22:24",
+                      "GroupMembership":  "G_HR_Users"
+                  },
+                  {
+                      "SamAccountName":  "deneme.muhasebe",
+                      "DisplayName":  "Deneme Muhasebe",
+                      "Department":  "Belirtilmemis",
+                      "OU":  "OU=Muhasebe,OU=Users2,DC=lab,DC=test",
+                      "Enabled":  true,
+                      "LastLogOn":  "Hic Giris Yapilmadi",
+                      "GroupMembership":  "G_Muhasebe_Users"
+                  },
+                  {
+                      "SamAccountName":  "Test.1",
+                      "DisplayName":  "Test 1",
+                      "Department":  "Belirtilmemis",
+                      "OU":  "OU=Test,OU=Users2,DC=lab,DC=test",
+                      "Enabled":  true,
+                      "LastLogOn":  "2026-08-17 15:50:29",
+                      "GroupMembership":  "Yok"
+                  }
+              ]
+}

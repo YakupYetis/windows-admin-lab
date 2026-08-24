@@ -1,12 +1,12 @@
 if (-not (Get-Module -ListAvailable -Name ActiveDirectory)) {
-    Write-Error "AD Modülü Bulunamadı"
+    Write-Error "AD Modulu Bulunamadi"
     return  
 }
 Import-Module ActiveDirectory
-Write-Host "[*] AD Verileri Toplanıyor..." -ForegroundColor Cyan
+Write-Host "[*] AD Verileri Toplaniyor..." -ForegroundColor Cyan
 
 $ADDomain = Get-ADDomain
-$CurrentDC = (Get-ADDomainController -Discover).HostName
+$CurrentDC = (Get-ADDomain).PDCEmulator
 
 $TotalOUs = (Get-ADOrganizationalUnit -Filter *).Count 
 $TotalUsers = (Get-ADUser -Filter *).Count 
@@ -24,12 +24,12 @@ $DomainSummary  = [PSCustomObject]@{
 }
 
 
-Write-Host "[*] Kullanıcı Verileri Ve Grup Bilgileri Toplanıyor..." -ForegroundColor Cyan
+Write-Host "[*] Kullanici Verileri Ve Grup Bilgileri Toplaniyor..." -ForegroundColor Cyan
 
 $ADUsers = Get-ADUser -Filter * -Properties Department, DistinguishedName, Enabled, LastLogOnDate, MemberOf
 
 $UserDetailsList = foreach($User in $ADUsers){
-    $OUPath = if ($User.DistinguishedName -match 'OU=(.*)') {"OU=" + $Matches[1]} else { "Kök Dizin (CN=Users vb.)"}
+    $OUPath = if ($User.DistinguishedName -match 'OU=(.*)') {"OU=" + $Matches[1]} else { "Kok Dizin (CN=Users vb.)"}
 
     $GroupNames = if ($User.MemberOf) {
         ($User.MemberOf | ForEach-Object {($_ -split ',*..=')[1]}) -join "; "}
@@ -39,11 +39,11 @@ $UserDetailsList = foreach($User in $ADUsers){
 [PSCustomObject]@{
     SamAccountName = $User.SamAccountName
     DisplayName = $User.Name
-    Department = if ($User.Department) {$User.Department} else{"Belirtilmemiş"}
+    Department = if ($User.Department) {$User.Department} else{"Belirtilmemis"}
     OU = $OUPath
     Enabled = $User.Enabled
     LastLogOn = if ($User.LastLogOnDate) {
-        $User.LastLogOnDate.ToString("yyyy-MM-dd HH:mm:ss")} else { "Hiç Giriş Yapılmadı" }
+        $User.LastLogOnDate.ToString("yyyy-MM-dd HH:mm:ss")} else { "Hic Giris Yapilmadi" }
         GroupMembership = $GroupNames
 }
 }
@@ -68,8 +68,8 @@ $UserDetailsCsv = "$ExportPath\AD_User_Details_$Timestamp.csv"
 $DomainSummary | Export-Csv -Path $DomainSummaryCsv -NoTypeInformation -Encoding UTF8 -Delimiter ","
 $UserDetailsList | Export-Csv -Path $UserDetailsCsv -NoTypeInformation -Encoding UTF8 -Delimiter ","
 
-Write-Host "`n[+] Raporlama başarıyla tamamlandı!" -ForegroundColor Green
-Write-Host "Dosyalar şuraya kaydedildi: $ExportPath" -ForegroundColor Yellow
+Write-Host "`n[+] Raporlama Basariyla Tamamlandi!" -ForegroundColor Green
+Write-Host "Dosyalar suraya kaydedildi: $ExportPath" -ForegroundColor Yellow
 Write-Host " - JSON: $JsonFilePath"
-Write-Host " - CSV 1 (Özet): $DomainSummaryCsv"
-Write-Host " - CSV 2 (Kullanıcılar): $UserDetailsCsv"
+Write-Host " - CSV 1 (Ozet): $DomainSummaryCsv"
+Write-Host " - CSV 2 (Kullanicilar): $UserDetailsCsv"
