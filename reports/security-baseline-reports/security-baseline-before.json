@@ -1,0 +1,1028 @@
+﻿[
+    {
+        "ComputerName":  "DC01",
+        "CollectionTime":  "2026-08-28 13:46:45",
+        "Firewall":  [
+                         {
+                             "Name":  "Domain",
+                             "Enabled":  {
+                                             "value":  1,
+                                             "Value":  "True"
+                                         },
+                             "DefaultInboundAction":  {
+                                                          "value":  0,
+                                                          "Value":  "NotConfigured"
+                                                      },
+                             "DefaultOutboundAction":  {
+                                                           "value":  0,
+                                                           "Value":  "NotConfigured"
+                                                       }
+                         },
+                         {
+                             "Name":  "Private",
+                             "Enabled":  {
+                                             "value":  1,
+                                             "Value":  "True"
+                                         },
+                             "DefaultInboundAction":  {
+                                                          "value":  0,
+                                                          "Value":  "NotConfigured"
+                                                      },
+                             "DefaultOutboundAction":  {
+                                                           "value":  0,
+                                                           "Value":  "NotConfigured"
+                                                       }
+                         },
+                         {
+                             "Name":  "Public",
+                             "Enabled":  {
+                                             "value":  1,
+                                             "Value":  "True"
+                                         },
+                             "DefaultInboundAction":  {
+                                                          "value":  0,
+                                                          "Value":  "NotConfigured"
+                                                      },
+                             "DefaultOutboundAction":  {
+                                                           "value":  0,
+                                                           "Value":  "NotConfigured"
+                                                       }
+                         }
+                     ],
+        "Defender":  {
+                         "AMServiceEnabled":  true,
+                         "AntivirusEnabled":  true,
+                         "AntispywareEnabled":  true,
+                         "BehaviorMonitorEnabled":  true,
+                         "IoavProtectionEnabled":  true,
+                         "RealTimeProtectionEnabled":  true,
+                         "NISEnabled":  true,
+                         "AntivirusSignatureVersion":  "1.437.1.0",
+                         "AntivirusSignatureLastUpdated":  "\/Date(1758074921000)\/"
+                     },
+        "SMBServer":  {
+                          "EnableSMB1Protocol":  false,
+                          "EnableSMB2Protocol":  true,
+                          "EncryptData":  false,
+                          "RequireSecuritySignature":  true,
+                          "EnableSecuritySignature":  true
+                      },
+        "SMBClient":  {
+                          "EnableSecuritySignature":  true,
+                          "RequireSecuritySignature":  true
+                      },
+        "LocalAdministrators":  [
+                                    {
+                                        "Name":  "Domain Admins",
+                                        "ObjectClass":  "group",
+                                        "SamAccountName":  "Domain Admins"
+                                    },
+                                    {
+                                        "Name":  "Enterprise Admins",
+                                        "ObjectClass":  "group",
+                                        "SamAccountName":  "Enterprise Admins"
+                                    },
+                                    {
+                                        "Name":  "msi-nb",
+                                        "ObjectClass":  "user",
+                                        "SamAccountName":  "msi-nb"
+                                    },
+                                    {
+                                        "Name":  "Administrator",
+                                        "ObjectClass":  "user",
+                                        "SamAccountName":  "Administrator"
+                                    }
+                                ],
+        "PasswordPolicy":  {
+                               "PolicyType":  "Domain",
+                               "ComplexityEnabled":  true,
+                               "MinPasswordLength":  7,
+                               "PasswordHistoryCount":  24,
+                               "MinPasswordAge":  {
+                                                      "Ticks":  864000000000,
+                                                      "Days":  1,
+                                                      "Hours":  0,
+                                                      "Milliseconds":  0,
+                                                      "Minutes":  0,
+                                                      "Seconds":  0,
+                                                      "TotalDays":  1,
+                                                      "TotalHours":  24,
+                                                      "TotalMilliseconds":  86400000,
+                                                      "TotalMinutes":  1440,
+                                                      "TotalSeconds":  86400
+                                                  },
+                               "MaxPasswordAge":  {
+                                                      "Ticks":  36288000000000,
+                                                      "Days":  42,
+                                                      "Hours":  0,
+                                                      "Milliseconds":  0,
+                                                      "Minutes":  0,
+                                                      "Seconds":  0,
+                                                      "TotalDays":  42,
+                                                      "TotalHours":  1008,
+                                                      "TotalMilliseconds":  3628800000,
+                                                      "TotalMinutes":  60480,
+                                                      "TotalSeconds":  3628800
+                                                  },
+                               "ReversibleEncryptionEnabled":  false
+                           },
+        "LockoutPolicy":  {
+                              "PolicyType":  "Domain",
+                              "LockoutThreshold":  0,
+                              "LockoutDuration":  {
+                                                      "Ticks":  6000000000,
+                                                      "Days":  0,
+                                                      "Hours":  0,
+                                                      "Milliseconds":  0,
+                                                      "Minutes":  10,
+                                                      "Seconds":  0,
+                                                      "TotalDays":  0.0069444444444444441,
+                                                      "TotalHours":  0.16666666666666666,
+                                                      "TotalMilliseconds":  600000,
+                                                      "TotalMinutes":  10,
+                                                      "TotalSeconds":  600
+                                                  },
+                              "LockoutObservationWindow":  {
+                                                               "Ticks":  6000000000,
+                                                               "Days":  0,
+                                                               "Hours":  0,
+                                                               "Milliseconds":  0,
+                                                               "Minutes":  10,
+                                                               "Seconds":  0,
+                                                               "TotalDays":  0.0069444444444444441,
+                                                               "TotalHours":  0.16666666666666666,
+                                                               "TotalMilliseconds":  600000,
+                                                               "TotalMinutes":  10,
+                                                               "TotalSeconds":  600
+                                                           }
+                          },
+        "AuditPolicy":  [
+                            "System audit policy",
+                            "",
+                            "Category/Subcategory                      Setting",
+                            "System",
+                            "  Security System Extension               No Auditing",
+                            "",
+                            "  System Integrity                        No Auditing",
+                            "",
+                            "  IPsec Driver                            No Auditing",
+                            "",
+                            "  Other System Events                     No Auditing",
+                            "",
+                            "  Security State Change                   No Auditing",
+                            "",
+                            "Logon/Logoff",
+                            "  Logon                                   Success and Failure",
+                            "",
+                            "  Logoff                                  Success and Failure",
+                            "",
+                            "  Account Lockout                         No Auditing",
+                            "",
+                            "  IPsec Main Mode                         No Auditing",
+                            "",
+                            "  IPsec Quick Mode                        No Auditing",
+                            "",
+                            "  IPsec Extended Mode                     No Auditing",
+                            "",
+                            "  Special Logon                           No Auditing",
+                            "",
+                            "  Other Logon/Logoff Events               No Auditing",
+                            "",
+                            "  Network Policy Server                   No Auditing",
+                            "",
+                            "  User / Device Claims                    No Auditing",
+                            "",
+                            "  Group Membership                        No Auditing",
+                            "",
+                            "  Access Rights                           No Auditing",
+                            "",
+                            "Object Access",
+                            "  File System                             No Auditing",
+                            "",
+                            "  Registry                                No Auditing",
+                            "",
+                            "  Kernel Object                           No Auditing",
+                            "",
+                            "  SAM                                     No Auditing",
+                            "",
+                            "  Certification Services                  No Auditing",
+                            "",
+                            "  Application Generated                   No Auditing",
+                            "",
+                            "  Handle Manipulation                     No Auditing",
+                            "",
+                            "  File Share                              No Auditing",
+                            "",
+                            "  Filtering Platform Packet Drop          No Auditing",
+                            "",
+                            "  Filtering Platform Connection           No Auditing",
+                            "",
+                            "  Other Object Access Events              No Auditing",
+                            "",
+                            "  Detailed File Share                     No Auditing",
+                            "",
+                            "  Removable Storage                       No Auditing",
+                            "",
+                            "  Central Policy Staging                  No Auditing",
+                            "",
+                            "Privilege Use",
+                            "  Non Sensitive Privilege Use             No Auditing",
+                            "",
+                            "  Other Privilege Use Events              No Auditing",
+                            "",
+                            "  Sensitive Privilege Use                 No Auditing",
+                            "",
+                            "Detailed Tracking",
+                            "  Process Creation                        No Auditing",
+                            "",
+                            "  Process Termination                     No Auditing",
+                            "",
+                            "  DPAPI Activity                          No Auditing",
+                            "",
+                            "  RPC Events                              No Auditing",
+                            "",
+                            "  Plug and Play Events                    No Auditing",
+                            "",
+                            "  Token Right Adjusted Events             No Auditing",
+                            "",
+                            "Policy Change",
+                            "  Audit Policy Change                     No Auditing",
+                            "",
+                            "  Authentication Policy Change            No Auditing",
+                            "",
+                            "  Authorization Policy Change             No Auditing",
+                            "",
+                            "  MPSSVC Rule-Level Policy Change         No Auditing",
+                            "",
+                            "  Filtering Platform Policy Change        No Auditing",
+                            "",
+                            "  Other Policy Change Events              No Auditing",
+                            "",
+                            "Account Management",
+                            "  Computer Account Management             No Auditing",
+                            "",
+                            "  Security Group Management               No Auditing",
+                            "",
+                            "  Distribution Group Management           No Auditing",
+                            "",
+                            "  Application Group Management            No Auditing",
+                            "",
+                            "  Other Account Management Events         No Auditing",
+                            "",
+                            "  User Account Management                 No Auditing",
+                            "",
+                            "DS Access",
+                            "  Directory Service Access                No Auditing",
+                            "",
+                            "  Directory Service Changes               No Auditing",
+                            "",
+                            "  Directory Service Replication           No Auditing",
+                            "",
+                            "  Detailed Directory Service Replication  No Auditing",
+                            "",
+                            "Account Logon",
+                            "  Kerberos Service Ticket Operations      No Auditing",
+                            "",
+                            "  Other Account Logon Events              No Auditing",
+                            "",
+                            "  Kerberos Authentication Service         No Auditing",
+                            "",
+                            "  Credential Validation                   No Auditing",
+                            ""
+                        ],
+        "PowerShellExecutionPolicy":  [
+                                          {
+                                              "Scope":  {
+                                                            "value":  4,
+                                                            "Value":  "MachinePolicy"
+                                                        },
+                                              "ExecutionPolicy":  {
+                                                                      "value":  5,
+                                                                      "Value":  "Undefined"
+                                                                  }
+                                          },
+                                          {
+                                              "Scope":  {
+                                                            "value":  3,
+                                                            "Value":  "UserPolicy"
+                                                        },
+                                              "ExecutionPolicy":  {
+                                                                      "value":  5,
+                                                                      "Value":  "Undefined"
+                                                                  }
+                                          },
+                                          {
+                                              "Scope":  {
+                                                            "value":  0,
+                                                            "Value":  "Process"
+                                                        },
+                                              "ExecutionPolicy":  {
+                                                                      "value":  5,
+                                                                      "Value":  "Undefined"
+                                                                  }
+                                          },
+                                          {
+                                              "Scope":  {
+                                                            "value":  1,
+                                                            "Value":  "CurrentUser"
+                                                        },
+                                              "ExecutionPolicy":  {
+                                                                      "value":  5,
+                                                                      "Value":  "Undefined"
+                                                                  }
+                                          },
+                                          {
+                                              "Scope":  {
+                                                            "value":  2,
+                                                            "Value":  "LocalMachine"
+                                                        },
+                                              "ExecutionPolicy":  {
+                                                                      "value":  1,
+                                                                      "Value":  "RemoteSigned"
+                                                                  }
+                                          }
+                                      ],
+        "RDP":  {
+                    "RDPEnabled":  false,
+                    "RDPPort":  3389,
+                    "ServiceName":  "TermService",
+                    "ServiceStatus":  {
+                                          "value":  1,
+                                          "Value":  "Stopped"
+                                      },
+                    "ServiceStartType":  {
+                                             "value":  3,
+                                             "Value":  "Manual"
+                                         }
+                },
+        "PSComputerName":  "DC01.lab.test",
+        "RunspaceId":  "75859d0e-bace-4dac-8a00-7c7d400e1ec2",
+        "PSShowComputerName":  true
+    },
+    {
+        "ComputerName":  "SRV01",
+        "CollectionTime":  "2026-08-28 13:46:53",
+        "Firewall":  [
+                         {
+                             "Name":  "Domain",
+                             "Enabled":  {
+                                             "value":  1,
+                                             "Value":  "True"
+                                         },
+                             "DefaultInboundAction":  {
+                                                          "value":  0,
+                                                          "Value":  "NotConfigured"
+                                                      },
+                             "DefaultOutboundAction":  {
+                                                           "value":  0,
+                                                           "Value":  "NotConfigured"
+                                                       }
+                         },
+                         {
+                             "Name":  "Private",
+                             "Enabled":  {
+                                             "value":  1,
+                                             "Value":  "True"
+                                         },
+                             "DefaultInboundAction":  {
+                                                          "value":  0,
+                                                          "Value":  "NotConfigured"
+                                                      },
+                             "DefaultOutboundAction":  {
+                                                           "value":  0,
+                                                           "Value":  "NotConfigured"
+                                                       }
+                         },
+                         {
+                             "Name":  "Public",
+                             "Enabled":  {
+                                             "value":  1,
+                                             "Value":  "True"
+                                         },
+                             "DefaultInboundAction":  {
+                                                          "value":  0,
+                                                          "Value":  "NotConfigured"
+                                                      },
+                             "DefaultOutboundAction":  {
+                                                           "value":  0,
+                                                           "Value":  "NotConfigured"
+                                                       }
+                         }
+                     ],
+        "Defender":  {
+                         "AMServiceEnabled":  true,
+                         "AntivirusEnabled":  true,
+                         "AntispywareEnabled":  true,
+                         "BehaviorMonitorEnabled":  true,
+                         "IoavProtectionEnabled":  true,
+                         "RealTimeProtectionEnabled":  true,
+                         "NISEnabled":  true,
+                         "AntivirusSignatureVersion":  "1.437.1.0",
+                         "AntivirusSignatureLastUpdated":  "\/Date(1758074921000)\/"
+                     },
+        "SMBServer":  {
+                          "EnableSMB1Protocol":  false,
+                          "EnableSMB2Protocol":  true,
+                          "EncryptData":  false,
+                          "RequireSecuritySignature":  false,
+                          "EnableSecuritySignature":  false
+                      },
+        "SMBClient":  {
+                          "EnableSecuritySignature":  true,
+                          "RequireSecuritySignature":  true
+                      },
+        "LocalAdministrators":  [
+                                    {
+                                        "Name":  "LAB\\Domain Admins",
+                                        "ObjectClass":  "Group",
+                                        "PrincipalSource":  {
+                                                                "value":  2,
+                                                                "Value":  "ActiveDirectory"
+                                                            }
+                                    },
+                                    {
+                                        "Name":  "SRV01\\Administrator",
+                                        "ObjectClass":  "User",
+                                        "PrincipalSource":  {
+                                                                "value":  1,
+                                                                "Value":  "Local"
+                                                            }
+                                    },
+                                    {
+                                        "Name":  "SRV01\\SRV",
+                                        "ObjectClass":  "User",
+                                        "PrincipalSource":  {
+                                                                "value":  1,
+                                                                "Value":  "Local"
+                                                            }
+                                    }
+                                ],
+        "PasswordPolicy":  {
+                               "PolicyType":  "Local",
+                               "RawOutput":  [
+                                                 "Force user logoff how long after time expires?:       Never",
+                                                 "Minimum password age (days):                          1",
+                                                 "Maximum password age (days):                          42",
+                                                 "Minimum password length:                              7",
+                                                 "Length of password history maintained:                24",
+                                                 "Lockout threshold:                                    Never",
+                                                 "Lockout duration (minutes):                           10",
+                                                 "Lockout observation window (minutes):                 10",
+                                                 "Computer role:                                        SERVER",
+                                                 "The command completed successfully.",
+                                                 ""
+                                             ]
+                           },
+        "LockoutPolicy":  {
+                              "PolicyType":  "Local",
+                              "RawOutput":  [
+                                                "Force user logoff how long after time expires?:       Never",
+                                                "Minimum password age (days):                          1",
+                                                "Maximum password age (days):                          42",
+                                                "Minimum password length:                              7",
+                                                "Length of password history maintained:                24",
+                                                "Lockout threshold:                                    Never",
+                                                "Lockout duration (minutes):                           10",
+                                                "Lockout observation window (minutes):                 10",
+                                                "Computer role:                                        SERVER",
+                                                "The command completed successfully.",
+                                                ""
+                                            ]
+                          },
+        "AuditPolicy":  [
+                            "System audit policy",
+                            "",
+                            "Category/Subcategory                      Setting",
+                            "System",
+                            "  Security System Extension               No Auditing",
+                            "",
+                            "  System Integrity                        No Auditing",
+                            "",
+                            "  IPsec Driver                            No Auditing",
+                            "",
+                            "  Other System Events                     No Auditing",
+                            "",
+                            "  Security State Change                   No Auditing",
+                            "",
+                            "Logon/Logoff",
+                            "  Logon                                   Success and Failure",
+                            "",
+                            "  Logoff                                  Success and Failure",
+                            "",
+                            "  Account Lockout                         No Auditing",
+                            "",
+                            "  IPsec Main Mode                         No Auditing",
+                            "",
+                            "  IPsec Quick Mode                        No Auditing",
+                            "",
+                            "  IPsec Extended Mode                     No Auditing",
+                            "",
+                            "  Special Logon                           No Auditing",
+                            "",
+                            "  Other Logon/Logoff Events               No Auditing",
+                            "",
+                            "  Network Policy Server                   No Auditing",
+                            "",
+                            "  User / Device Claims                    No Auditing",
+                            "",
+                            "  Group Membership                        No Auditing",
+                            "",
+                            "  Access Rights                           No Auditing",
+                            "",
+                            "Object Access",
+                            "  File System                             Success and Failure",
+                            "",
+                            "  Registry                                No Auditing",
+                            "",
+                            "  Kernel Object                           No Auditing",
+                            "",
+                            "  SAM                                     No Auditing",
+                            "",
+                            "  Certification Services                  No Auditing",
+                            "",
+                            "  Application Generated                   No Auditing",
+                            "",
+                            "  Handle Manipulation                     No Auditing",
+                            "",
+                            "  File Share                              No Auditing",
+                            "",
+                            "  Filtering Platform Packet Drop          No Auditing",
+                            "",
+                            "  Filtering Platform Connection           No Auditing",
+                            "",
+                            "  Other Object Access Events              No Auditing",
+                            "",
+                            "  Detailed File Share                     No Auditing",
+                            "",
+                            "  Removable Storage                       No Auditing",
+                            "",
+                            "  Central Policy Staging                  No Auditing",
+                            "",
+                            "Privilege Use",
+                            "  Non Sensitive Privilege Use             No Auditing",
+                            "",
+                            "  Other Privilege Use Events              No Auditing",
+                            "",
+                            "  Sensitive Privilege Use                 No Auditing",
+                            "",
+                            "Detailed Tracking",
+                            "  Process Creation                        No Auditing",
+                            "",
+                            "  Process Termination                     No Auditing",
+                            "",
+                            "  DPAPI Activity                          No Auditing",
+                            "",
+                            "  RPC Events                              No Auditing",
+                            "",
+                            "  Plug and Play Events                    No Auditing",
+                            "",
+                            "  Token Right Adjusted Events             No Auditing",
+                            "",
+                            "Policy Change",
+                            "  Audit Policy Change                     No Auditing",
+                            "",
+                            "  Authentication Policy Change            No Auditing",
+                            "",
+                            "  Authorization Policy Change             No Auditing",
+                            "",
+                            "  MPSSVC Rule-Level Policy Change         No Auditing",
+                            "",
+                            "  Filtering Platform Policy Change        No Auditing",
+                            "",
+                            "  Other Policy Change Events              No Auditing",
+                            "",
+                            "Account Management",
+                            "  Computer Account Management             No Auditing",
+                            "",
+                            "  Security Group Management               No Auditing",
+                            "",
+                            "  Distribution Group Management           No Auditing",
+                            "",
+                            "  Application Group Management            No Auditing",
+                            "",
+                            "  Other Account Management Events         No Auditing",
+                            "",
+                            "  User Account Management                 No Auditing",
+                            "",
+                            "DS Access",
+                            "  Directory Service Access                No Auditing",
+                            "",
+                            "  Directory Service Changes               No Auditing",
+                            "",
+                            "  Directory Service Replication           No Auditing",
+                            "",
+                            "  Detailed Directory Service Replication  No Auditing",
+                            "",
+                            "Account Logon",
+                            "  Kerberos Service Ticket Operations      No Auditing",
+                            "",
+                            "  Other Account Logon Events              No Auditing",
+                            "",
+                            "  Kerberos Authentication Service         No Auditing",
+                            "",
+                            "  Credential Validation                   No Auditing",
+                            ""
+                        ],
+        "PowerShellExecutionPolicy":  [
+                                          {
+                                              "Scope":  {
+                                                            "value":  4,
+                                                            "Value":  "MachinePolicy"
+                                                        },
+                                              "ExecutionPolicy":  {
+                                                                      "value":  5,
+                                                                      "Value":  "Undefined"
+                                                                  }
+                                          },
+                                          {
+                                              "Scope":  {
+                                                            "value":  3,
+                                                            "Value":  "UserPolicy"
+                                                        },
+                                              "ExecutionPolicy":  {
+                                                                      "value":  5,
+                                                                      "Value":  "Undefined"
+                                                                  }
+                                          },
+                                          {
+                                              "Scope":  {
+                                                            "value":  0,
+                                                            "Value":  "Process"
+                                                        },
+                                              "ExecutionPolicy":  {
+                                                                      "value":  5,
+                                                                      "Value":  "Undefined"
+                                                                  }
+                                          },
+                                          {
+                                              "Scope":  {
+                                                            "value":  1,
+                                                            "Value":  "CurrentUser"
+                                                        },
+                                              "ExecutionPolicy":  {
+                                                                      "value":  5,
+                                                                      "Value":  "Undefined"
+                                                                  }
+                                          },
+                                          {
+                                              "Scope":  {
+                                                            "value":  2,
+                                                            "Value":  "LocalMachine"
+                                                        },
+                                              "ExecutionPolicy":  {
+                                                                      "value":  1,
+                                                                      "Value":  "RemoteSigned"
+                                                                  }
+                                          }
+                                      ],
+        "RDP":  {
+                    "RDPEnabled":  false,
+                    "RDPPort":  3389,
+                    "ServiceName":  "TermService",
+                    "ServiceStatus":  {
+                                          "value":  1,
+                                          "Value":  "Stopped"
+                                      },
+                    "ServiceStartType":  {
+                                             "value":  3,
+                                             "Value":  "Manual"
+                                         }
+                },
+        "PSComputerName":  "SRV01.lab.test",
+        "RunspaceId":  "4301a521-a24b-44d6-8438-04305556fc1a",
+        "PSShowComputerName":  true
+    },
+    {
+        "ComputerName":  "CL01",
+        "CollectionTime":  "2026-08-28 13:46:57",
+        "Firewall":  [
+                         {
+                             "Name":  "Domain",
+                             "Enabled":  {
+                                             "value":  1,
+                                             "Value":  "True"
+                                         },
+                             "DefaultInboundAction":  {
+                                                          "value":  0,
+                                                          "Value":  "NotConfigured"
+                                                      },
+                             "DefaultOutboundAction":  {
+                                                           "value":  0,
+                                                           "Value":  "NotConfigured"
+                                                       }
+                         },
+                         {
+                             "Name":  "Private",
+                             "Enabled":  {
+                                             "value":  1,
+                                             "Value":  "True"
+                                         },
+                             "DefaultInboundAction":  {
+                                                          "value":  2,
+                                                          "Value":  "Allow"
+                                                      },
+                             "DefaultOutboundAction":  {
+                                                           "value":  2,
+                                                           "Value":  "Allow"
+                                                       }
+                         },
+                         {
+                             "Name":  "Public",
+                             "Enabled":  {
+                                             "value":  1,
+                                             "Value":  "True"
+                                         },
+                             "DefaultInboundAction":  {
+                                                          "value":  2,
+                                                          "Value":  "Allow"
+                                                      },
+                             "DefaultOutboundAction":  {
+                                                           "value":  2,
+                                                           "Value":  "Allow"
+                                                       }
+                         }
+                     ],
+        "Defender":  {
+                         "AMServiceEnabled":  true,
+                         "AntivirusEnabled":  true,
+                         "AntispywareEnabled":  true,
+                         "BehaviorMonitorEnabled":  true,
+                         "IoavProtectionEnabled":  true,
+                         "RealTimeProtectionEnabled":  true,
+                         "NISEnabled":  true,
+                         "AntivirusSignatureVersion":  "1.403.7.0",
+                         "AntivirusSignatureLastUpdated":  "\/Date(1701814359000)\/"
+                     },
+        "SMBServer":  {
+                          "EnableSMB1Protocol":  false,
+                          "EnableSMB2Protocol":  true,
+                          "EncryptData":  false,
+                          "RequireSecuritySignature":  true,
+                          "EnableSecuritySignature":  false
+                      },
+        "SMBClient":  {
+                          "EnableSecuritySignature":  true,
+                          "RequireSecuritySignature":  true
+                      },
+        "LocalAdministrators":  [
+                                    {
+                                        "Name":  "CL01\\Administrator",
+                                        "ObjectClass":  "User",
+                                        "PrincipalSource":  {
+                                                                "value":  1,
+                                                                "Value":  "Local"
+                                                            }
+                                    },
+                                    {
+                                        "Name":  "CL01\\Yakup",
+                                        "ObjectClass":  "User",
+                                        "PrincipalSource":  {
+                                                                "value":  1,
+                                                                "Value":  "Local"
+                                                            }
+                                    },
+                                    {
+                                        "Name":  "LAB\\Domain Admins",
+                                        "ObjectClass":  "Group",
+                                        "PrincipalSource":  {
+                                                                "value":  2,
+                                                                "Value":  "ActiveDirectory"
+                                                            }
+                                    }
+                                ],
+        "PasswordPolicy":  {
+                               "PolicyType":  "Local",
+                               "RawOutput":  [
+                                                 "Force user logoff how long after time expires?:       Never",
+                                                 "Minimum password age (days):                          1",
+                                                 "Maximum password age (days):                          42",
+                                                 "Minimum password length:                              7",
+                                                 "Length of password history maintained:                24",
+                                                 "Lockout threshold:                                    Never",
+                                                 "Lockout duration (minutes):                           10",
+                                                 "Lockout observation window (minutes):                 10",
+                                                 "Computer role:                                        WORKSTATION",
+                                                 "The command completed successfully.",
+                                                 ""
+                                             ]
+                           },
+        "LockoutPolicy":  {
+                              "PolicyType":  "Local",
+                              "RawOutput":  [
+                                                "Force user logoff how long after time expires?:       Never",
+                                                "Minimum password age (days):                          1",
+                                                "Maximum password age (days):                          42",
+                                                "Minimum password length:                              7",
+                                                "Length of password history maintained:                24",
+                                                "Lockout threshold:                                    Never",
+                                                "Lockout duration (minutes):                           10",
+                                                "Lockout observation window (minutes):                 10",
+                                                "Computer role:                                        WORKSTATION",
+                                                "The command completed successfully.",
+                                                ""
+                                            ]
+                          },
+        "AuditPolicy":  [
+                            "System audit policy",
+                            "",
+                            "Category/Subcategory                      Setting",
+                            "System",
+                            "  Security System Extension               No Auditing",
+                            "",
+                            "  System Integrity                        No Auditing",
+                            "",
+                            "  IPsec Driver                            No Auditing",
+                            "",
+                            "  Other System Events                     No Auditing",
+                            "",
+                            "  Security State Change                   No Auditing",
+                            "",
+                            "Logon/Logoff",
+                            "  Logon                                   Success and Failure",
+                            "",
+                            "  Logoff                                  Success and Failure",
+                            "",
+                            "  Account Lockout                         No Auditing",
+                            "",
+                            "  IPsec Main Mode                         No Auditing",
+                            "",
+                            "  IPsec Quick Mode                        No Auditing",
+                            "",
+                            "  IPsec Extended Mode                     No Auditing",
+                            "",
+                            "  Special Logon                           No Auditing",
+                            "",
+                            "  Other Logon/Logoff Events               No Auditing",
+                            "",
+                            "  Network Policy Server                   No Auditing",
+                            "",
+                            "  User / Device Claims                    No Auditing",
+                            "",
+                            "  Group Membership                        No Auditing",
+                            "",
+                            "  Access Rights                           No Auditing",
+                            "",
+                            "Object Access",
+                            "  File System                             Success and Failure",
+                            "",
+                            "  Registry                                No Auditing",
+                            "",
+                            "  Kernel Object                           No Auditing",
+                            "",
+                            "  SAM                                     No Auditing",
+                            "",
+                            "  Certification Services                  No Auditing",
+                            "",
+                            "  Application Generated                   No Auditing",
+                            "",
+                            "  Handle Manipulation                     No Auditing",
+                            "",
+                            "  File Share                              No Auditing",
+                            "",
+                            "  Filtering Platform Packet Drop          No Auditing",
+                            "",
+                            "  Filtering Platform Connection           No Auditing",
+                            "",
+                            "  Other Object Access Events              No Auditing",
+                            "",
+                            "  Detailed File Share                     No Auditing",
+                            "",
+                            "  Removable Storage                       No Auditing",
+                            "",
+                            "  Central Policy Staging                  No Auditing",
+                            "",
+                            "Privilege Use",
+                            "  Non Sensitive Privilege Use             No Auditing",
+                            "",
+                            "  Other Privilege Use Events              No Auditing",
+                            "",
+                            "  Sensitive Privilege Use                 No Auditing",
+                            "",
+                            "Detailed Tracking",
+                            "  Process Creation                        No Auditing",
+                            "",
+                            "  Process Termination                     No Auditing",
+                            "",
+                            "  DPAPI Activity                          No Auditing",
+                            "",
+                            "  RPC Events                              No Auditing",
+                            "",
+                            "  Plug and Play Events                    No Auditing",
+                            "",
+                            "  Token Right Adjusted Events             No Auditing",
+                            "",
+                            "Policy Change",
+                            "  Audit Policy Change                     No Auditing",
+                            "",
+                            "  Authentication Policy Change            No Auditing",
+                            "",
+                            "  Authorization Policy Change             No Auditing",
+                            "",
+                            "  MPSSVC Rule-Level Policy Change         No Auditing",
+                            "",
+                            "  Filtering Platform Policy Change        No Auditing",
+                            "",
+                            "  Other Policy Change Events              No Auditing",
+                            "",
+                            "Account Management",
+                            "  Computer Account Management             No Auditing",
+                            "",
+                            "  Security Group Management               No Auditing",
+                            "",
+                            "  Distribution Group Management           No Auditing",
+                            "",
+                            "  Application Group Management            No Auditing",
+                            "",
+                            "  Other Account Management Events         No Auditing",
+                            "",
+                            "  User Account Management                 No Auditing",
+                            "",
+                            "DS Access",
+                            "  Directory Service Access                No Auditing",
+                            "",
+                            "  Directory Service Changes               No Auditing",
+                            "",
+                            "  Directory Service Replication           No Auditing",
+                            "",
+                            "  Detailed Directory Service Replication  No Auditing",
+                            "",
+                            "Account Logon",
+                            "  Kerberos Service Ticket Operations      No Auditing",
+                            "",
+                            "  Other Account Logon Events              No Auditing",
+                            "",
+                            "  Kerberos Authentication Service         No Auditing",
+                            "",
+                            "  Credential Validation                   No Auditing",
+                            ""
+                        ],
+        "PowerShellExecutionPolicy":  [
+                                          {
+                                              "Scope":  {
+                                                            "value":  4,
+                                                            "Value":  "MachinePolicy"
+                                                        },
+                                              "ExecutionPolicy":  {
+                                                                      "value":  5,
+                                                                      "Value":  "Undefined"
+                                                                  }
+                                          },
+                                          {
+                                              "Scope":  {
+                                                            "value":  3,
+                                                            "Value":  "UserPolicy"
+                                                        },
+                                              "ExecutionPolicy":  {
+                                                                      "value":  5,
+                                                                      "Value":  "Undefined"
+                                                                  }
+                                          },
+                                          {
+                                              "Scope":  {
+                                                            "value":  0,
+                                                            "Value":  "Process"
+                                                        },
+                                              "ExecutionPolicy":  {
+                                                                      "value":  5,
+                                                                      "Value":  "Undefined"
+                                                                  }
+                                          },
+                                          {
+                                              "Scope":  {
+                                                            "value":  1,
+                                                            "Value":  "CurrentUser"
+                                                        },
+                                              "ExecutionPolicy":  {
+                                                                      "value":  5,
+                                                                      "Value":  "Undefined"
+                                                                  }
+                                          },
+                                          {
+                                              "Scope":  {
+                                                            "value":  2,
+                                                            "Value":  "LocalMachine"
+                                                        },
+                                              "ExecutionPolicy":  {
+                                                                      "value":  1,
+                                                                      "Value":  "RemoteSigned"
+                                                                  }
+                                          }
+                                      ],
+        "RDP":  {
+                    "RDPEnabled":  false,
+                    "RDPPort":  3389,
+                    "ServiceName":  "TermService",
+                    "ServiceStatus":  {
+                                          "value":  1,
+                                          "Value":  "Stopped"
+                                      },
+                    "ServiceStartType":  {
+                                             "value":  3,
+                                             "Value":  "Manual"
+                                         }
+                },
+        "PSComputerName":  "CL01.lab.test",
+        "RunspaceId":  "1057f621-7899-4d72-b8ef-e6f00e3ee462",
+        "PSShowComputerName":  true
+    }
+]

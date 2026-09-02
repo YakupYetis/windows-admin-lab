@@ -6,7 +6,6 @@
     Sonuclari PASS, WARNING, FAIL olarak konsola yazar ve JSON/CSV ciktisi uretir.
 #>
 
-# Calisma dizini ve rapor yollari
 $ReportPath = "C:\LabReports"
 if (!(Test-Path -Path $ReportPath)) { New-Item -ItemType Directory -Path $ReportPath | Out-Null }
 $Timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
@@ -22,7 +21,7 @@ function Add-CheckResult {
         [string]$Details
     )
     
-    # Konsol renklendirmesi
+   
     switch ($Status) {
         "PASS"    { Write-Host "[PASS]    - $TestName : $Details" -ForegroundColor Green }
         "WARNING" { Write-Host "[WARNING] - $TestName : $Details" -ForegroundColor Yellow }
@@ -39,7 +38,7 @@ function Add-CheckResult {
 
 Write-Host "=== Lab Ortami Saglik Taramasi Baslatiliyor... ===" -ForegroundColor Cyan
 
-# 1. DC01 Erisiliyor mu? (Ping Testi)
+
 $DcIP = "10.30.0.10"
 if (Test-Connection -ComputerName $DcIP -Count 1 -Quiet -ErrorAction SilentlyContinue) {
     Add-CheckResult -TestName "DC01 Erisilebilirligi" -Status "PASS" -Details "DC01 ($DcIP) aktif ve yanit veriyor."
@@ -47,15 +46,15 @@ if (Test-Connection -ComputerName $DcIP -Count 1 -Quiet -ErrorAction SilentlyCon
     Add-CheckResult -TestName "DC01 Erisilebilirligi" -Status "FAIL" -Details "DC01 ($DcIP) adresine ulasilamiyor."
 }
 
-# 2. SRV01 Erisiliyor mu? (Ping Testi)
-$SrvIP = "10.30.0.20"
+
+$SrvIP = "10.30.0.11"
 if (Test-Connection -ComputerName $SrvIP -Count 1 -Quiet -ErrorAction SilentlyContinue) {
     Add-CheckResult -TestName "SRV01 Erisilebilirligi" -Status "PASS" -Details "SRV01 ($SrvIP) aktif ve yanit veriyor."
 } else {
     Add-CheckResult -TestName "SRV01 Erisilebilirligi" -Status "FAIL" -Details "SRV01 ($SrvIP) adresine ulasilamiyor."
 }
 
-# 3. DNS lab.test cozumleniyor mu?
+
 try {
     $DnsResult = Resolve-DnsName -Name "lab.test" -ErrorAction Stop
     if ($DnsResult) {
@@ -67,7 +66,7 @@ try {
     Add-CheckResult -TestName "DNS lab.test Cozumlemesi" -Status "FAIL" -Details "lab.test cozumlenemedi: $_"
 }
 
-# 4. AD Domain Erisilebilir mi?
+
 try {
     $Domain = [System.DirectoryServices.ActiveDirectory.Domain]::GetComputerDomain()
     Add-CheckResult -TestName "Active Directory Domain Erisimi" -Status "PASS" -Details "Domain aktif: $($Domain.Name)"
@@ -75,9 +74,9 @@ try {
     Add-CheckResult -TestName "Active Directory Domain Erisimi" -Status "FAIL" -Details "Domain erisim hatasi: $_"
 }
 
-# 5. DHCP Servisi Calisiyor mu?
+
 try {
-    $DhcpService = Get-Service -Name "DHCPServer" -ErrorAction Stop
+    $DhcpService = Get-Service -ComputerName "SRV01" -Name "DHCPServer" -ErrorAction Stop
     if ($DhcpService.Status -eq 'Running') {
         Add-CheckResult -TestName "DHCP Servis Durumu" -Status "PASS" -Details "DHCP Server servisi calisiyor."
     } else {
@@ -87,7 +86,7 @@ try {
     Add-CheckResult -TestName "DHCP Servis Durumu" -Status "FAIL" -Details "DHCP servisi sistemde bulunamadi veya erisilemedi."
 }
 
-# 6. File Server Share'leri Erisilebilir mi? (Orn: \\SRV01\Shares)
+
 $SharePath = "\\SRV01\Shares"
 if (Test-Path -Path $SharePath) {
     Add-CheckResult -TestName "File Server Paylasim Erisimi" -Status "PASS" -Details "$SharePath paylasimina erisilebiliyor."
@@ -95,7 +94,7 @@ if (Test-Path -Path $SharePath) {
     Add-CheckResult -TestName "File Server Paylasim Erisimi" -Status "FAIL" -Details "$SharePath paylasimina erisilemedi veya henuz olusturulmadi."
 }
 
-# 7. CL01 Lease Alinmis mi? (DHCP Scope uzerinden kontrol)
+
 try {
     $Leases = Get-DhcpServerv4Scope -ErrorAction SilentlyContinue | Get-DhcpServerv4Lease -ErrorAction SilentlyContinue
     if ($Leases) {
@@ -112,7 +111,7 @@ try {
     Add-CheckResult -TestName "CL01 DHCP Lease Durumu" -Status "WARNING" -Details "DHCP scope/lease bilgileri okunamadi (Rol yuklu olmayabilir): $_"
 }
 
-# Raporlari Disa Aktar (JSON ve CSV)
+
 $Results | ConvertTo-Json -Depth 3 | Out-File -FilePath $JsonFile -Encoding utf8
 $Results | Export-Csv -Path $CsvFile -NoTypeInformation -Encoding utf8
 

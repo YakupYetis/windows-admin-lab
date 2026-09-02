@@ -1,122 +1,104 @@
-﻿<#
-.SYNOPSIS
-    Lab Ortami Kapsamli Saglik Kontrolü ve Raporlama Scripti
-.DESCRIPTION
-    DC01, SRV01, DNS, Active Directory, DHCP ve File Server paylasimlarini kontrol eder.
-    Sonuclari PASS, WARNING, FAIL olarak konsola yazar ve JSON/CSV ciktisi uretir.
-#>
+﻿$outputDir = $PSScriptRoot
+if (-not $outputDir) {
+    $outputDir = Get-Location
+}
 
-$ReportPath = "C:\LabReports"
-if (!(Test-Path -Path $ReportPath)) { New-Item -ItemType Directory -Path $ReportPath | Out-Null }
-$Timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
-$JsonFile = "$ReportPath\LabHealthReport_$Timestamp.json"
-$CsvFile  = "$ReportPath\LabHealthReport_$Timestamp.csv"
+$timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
+$jsonFile = Join-Path $outputDir "SystemInfo_$timestamp.json"
+$csvFile = Join-Path $outputDir "SystemInfo_$timestamp.csv"
 
-$Results = [System.Collections.Generic.List[PSCustomObject]]::new()
 
-function Add-CheckResult {
-    param(
-        [string]$TestName,
-        [string]$Status, # PASS, WARNING, FAIL
-        [string]$Details
-    )
-    
-   
-    switch ($Status) {
-        "PASS"    { Write-Host "[PASS]    - $TestName : $Details" -ForegroundColor Green }
-        "WARNING" { Write-Host "[WARNING] - $TestName : $Details" -ForegroundColor Yellow }
-        "FAIL"    { Write-Host "[FAIL]    - $TestName : $Details" -ForegroundColor Red }
+$os = Get-CimInstance Win32_OperatingSystem
+
+# CPU bilgisini tek bir string olarak al
+$cpu = (Get-CimInstance Win32_Processor | Select-Object -ExpandProperty Name) -join ', '
+
+
+$totalVisibleGB = [Math]::Round($os.TotalVisibleMemorySize / 1MB, 2)
+$freePhysicalGB = [Math]::Round($os.FreePhysicalMemory / 1MB, 2)
+$usedPhysicalGB = [Math]::Round(($os.TotalVisibleMemorySize - $os.FreePhysicalMemory) / 1MB, 2)
+
+
+$activeAdapters = Get-NetAdapter | Where-Object Status -eq 'Up'
+
+$ips = (
+    Get-NetIPAddress -AddressFamily IPv4 |
+    Where-Object {
+        $_.IPAddress -ne '127.0.0.1'
     }
-
-    $Results.Add([PSCustomObject]@{
-        Timestamp   = (Get-Date -Format "yyyy-MM-dd HH:mm:ss")
-        TestName    = $TestName
-        Status      = $Status
-        Details     = $Details
-    })
-}
-
-Write-Host "=== Lab Ortami Saglik Taramasi Baslatiliyor... ===" -ForegroundColor Cyan
+).IPAddress
 
 
-$DcIP = "10.30.0.10"
-if (Test-Connection -ComputerName $DcIP -Count 1 -Quiet -ErrorAction SilentlyContinue) {
-    Add-CheckResult -TestName "DC01 Erisilebilirligi" -Status "PASS" -Details "DC01 ($DcIP) aktif ve yanit veriyor."
-} else {
-    Add-CheckResult -TestName "DC01 Erisilebilirligi" -Status "FAIL" -Details "DC01 ($DcIP) adresine ulasilamiyor."
-}
+$disks = Get-CimInstance Win32_LogicalDisk -Filter "DriveType=3"
 
-
-$SrvIP = "10.30.0.11"
-if (Test-Connection -ComputerName $SrvIP -Count 1 -Quiet -ErrorAction SilentlyContinue) {
-    Add-CheckResult -TestName "SRV01 Erisilebilirligi" -Status "PASS" -Details "SRV01 ($SrvIP) aktif ve yanit veriyor."
-} else {
-    Add-CheckResult -TestName "SRV01 Erisilebilirligi" -Status "FAIL" -Details "SRV01 ($SrvIP) adresine ulasilamiyor."
-}
-
-
-try {
-    $DnsResult = Resolve-DnsName -Name "lab.test" -ErrorAction Stop
-    if ($DnsResult) {
-        Add-CheckResult -TestName "DNS lab.test Cozumlemesi" -Status "PASS" -Details "lab.test basariyla cozumlendi."
-    } else {
-        Add-CheckResult -TestName "DNS lab.test Cozumlemesi" -Status "WARNING" -Details "DNS sorgusu bos dondu."
+$diskInfo = foreach ($disk in $disks) {
+    [PSCustomObject]@{
+        DriveLetter = $disk.DeviceID
+        TotalSizeGB = [Math]::Round($disk.Size / 1GB, 2)
+        FreeSpaceGB = [Math]::Round($disk.FreeSpace / 1GB, 2)
+        UsedSpaceGB = [Math]::Round(($disk.Size - $disk.FreeSpace) / 1GB, 2)
     }
-} catch {
-    Add-CheckResult -TestName "DNS lab.test Cozumlemesi" -Status "FAIL" -Details "lab.test cozumlenemedi: $_"
 }
 
 
-try {
-    $Domain = [System.DirectoryServices.ActiveDirectory.Domain]::GetComputerDomain()
-    Add-CheckResult -TestName "Active Directory Domain Erisimi" -Status "PASS" -Details "Domain aktif: $($Domain.Name)"
-} catch {
-    Add-CheckResult -TestName "Active Directory Domain Erisimi" -Status "FAIL" -Details "Domain erisim hatasi: $_"
+$rebootRequired = $false
+
+if (
+    (Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\RebootPending") -or
+    (Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequired") -or
+    (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager" -Name "PendingFileRenameOperations" -ErrorAction SilentlyContinue)
+) {
+    $rebootRequired = $true
 }
 
 
-try {
-    $DhcpService = Get-Service -ComputerName "SRV01" -Name "DHCPServer" -ErrorAction Stop
-    if ($DhcpService.Status -eq 'Running') {
-        Add-CheckResult -TestName "DHCP Servis Durumu" -Status "PASS" -Details "DHCP Server servisi calisiyor."
-    } else {
-        Add-CheckResult -TestName "DHCP Servis Durumu" -Status "FAIL" -Details "DHCP Server servisi calismiyor (Durum: $($DhcpService.Status))."
+$runningServicesCount = @(
+    Get-Service |
+    Where-Object {
+        $_.Status -eq 'Running'
     }
-} catch {
-    Add-CheckResult -TestName "DHCP Servis Durumu" -Status "FAIL" -Details "DHCP servisi sistemde bulunamadi veya erisilemedi."
+).Count
+
+
+$systemData = [PSCustomObject]@{
+    ComputerName       = $env:COMPUTERNAME
+    OperatingSystem    = $os.Caption
+    OSVersion          = $os.Version
+    LastBootTime       = $os.LastBootUpTime
+    IPAdresses         = ($ips -join ', ')
+    ActiveAdapters     = ($activeAdapters.Name -join ', ')
+    CPU                = $cpu
+    TotalRAM_GB        = $totalVisibleGB
+    UsedRam_GB         = $usedPhysicalGB
+    FreeRam_GB         = $freePhysicalGB
+    Disks              = $diskInfo
+    RunningServicesCount = $runningServicesCount
+    RebootRequired     = $rebootRequired
 }
 
 
-$SharePath = "\\SRV01\Shares"
-if (Test-Path -Path $SharePath) {
-    Add-CheckResult -TestName "File Server Paylasim Erisimi" -Status "PASS" -Details "$SharePath paylasimina erisilebiliyor."
-} else {
-    Add-CheckResult -TestName "File Server Paylasim Erisimi" -Status "FAIL" -Details "$SharePath paylasimina erisilemedi veya henuz olusturulmadi."
+$systemData | Format-List
+
+
+# JSON
+$systemData |
+    ConvertTo-Json -Depth 5 |
+    Out-File -FilePath $jsonFile -Encoding utf8
+
+
+# CSV
+$csvData = [PSCustomObject]@{
+    ComputerName          = $systemData.ComputerName
+    OperatingSystem       = $systemData.OperatingSystem
+    OSVersion             = $systemData.OSVersion
+    LastBootTime          = $systemData.LastBootTime
+    ActiveAdapters        = $systemData.ActiveAdapters
+    CPU                   = $systemData.CPU
+    TotalRAM_GB           = $systemData.TotalRAM_GB
+    UsedRam_GB            = $systemData.UsedRam_GB
+    FreeRam_GB            = $systemData.FreeRam_GB
+    RebootRequired        = $systemData.RebootRequired
 }
 
-
-try {
-    $Leases = Get-DhcpServerv4Scope -ErrorAction SilentlyContinue | Get-DhcpServerv4Lease -ErrorAction SilentlyContinue
-    if ($Leases) {
-        $Cl01Lease = $Leases | Where-Object { $_.HostName -like "*CL01*" -or $_.ClientName -like "*CL01*" }
-        if ($Cl01Lease) {
-            Add-CheckResult -TestName "CL01 DHCP Lease Durumu" -Status "PASS" -Details "CL01 icin aktif IP kiralamasi bulundu (IP: $($Cl01Lease.IPAddress))."
-        } else {
-            Add-CheckResult -TestName "CL01 DHCP Lease Durumu" -Status "WARNING" -Details "DHCP tablosunda aktif kiralamalar var ancak CL01 adina ait kayit bulunamadi."
-        }
-    } else {
-        Add-CheckResult -TestName "CL01 DHCP Lease Durumu" -Status "FAIL" -Details "Aktif DHCP scope veya kiralanan IP bulunamadi."
-    }
-} catch {
-    Add-CheckResult -TestName "CL01 DHCP Lease Durumu" -Status "WARNING" -Details "DHCP scope/lease bilgileri okunamadi (Rol yuklu olmayabilir): $_"
-}
-
-
-$Results | ConvertTo-Json -Depth 3 | Out-File -FilePath $JsonFile -Encoding utf8
-$Results | Export-Csv -Path $CsvFile -NoTypeInformation -Encoding utf8
-
-Write-Host "================================================" -ForegroundColor Cyan
-Write-Host "Raporlar basariyla kaydedildi:" -ForegroundColor Green
-Write-Host " - JSON Raporu: $JsonFile"
-Write-Host " - CSV Raporu:  $CsvFile"
-Write-Host "================================================" -ForegroundColor Cyan
+$csvData |
+    Export-Csv -Path $csvFile -NoTypeInformation -Encoding UTF8

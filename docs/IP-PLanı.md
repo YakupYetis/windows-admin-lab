@@ -10,7 +10,7 @@ Amaç: Makinelerin internet bağlantısını keserek izole ve kendi içlerinde k
  
  Subnet Mask: 255.255.255.0
  
- Default Gateway: Dış internetten izole edilmiş bir laboratuvar ortamı oluşturmak amacıyla Host-Only ağ modu tercih edilmiştir. Sanal makinelerin birbiriyle haberleşmesini sağlamak için bir gatewaye ihtiyaç duyulmuş; bu bileşen VMware Virtual Network Switch (VMnet1) üzerinden sağlanmıştır. Yapılandırılan subnette Default Gateway adresi 10.30.0.2 olarak belirlenmiştir.
+ Default Gateway: Dış internetten izole edilmiş bir laboratuvar ortamı oluşturmak amacıyla Host-Only ağ modu tercih edilmiştir. DHCP Server tarafından default gateway adresi olarak 10.30.0.2 dağıtılmıştır. Aynı subnet içerisinde bulunan makineler Layer 2 üzerinden doğrudan iletişim kurabildiğinden, bu iletişim sırasında default gateway kullanılmamaktadır. Bu nedenle 10.30.0.2 adresi ARP tablosunda görünmemektedir. Bununla birlikte Get-NetRoute çıktısında 0.0.0.0/0 rotasının NextHop değeri 10.30.0.2 olarak görülmektedir. Bu yapılandırmaya göre istemci, kendi yerel subnet'i dışındaki bir IPv4 ağına erişmek istediğinde trafiği 10.30.0.2 adresine yönlendirmeye çalışacaktır.
 
  ## IP Dağılımı
 
