@@ -21,4 +21,5 @@ Selected Events: By log>Security
 ## Collector Inactive
 
 ![inactive](inactive.png)
-Collector tarafında Selected events'i security yerine veya security ile diğer seçenekleride seçince bu kısım active olarak görünüyor ve sorun göstermiyor ancak sadece security bıraktığımda bu şekilde inactive oluyor
+
+Collector tarafında Selected Events bölümünde Security kategorisinin yanında veya Security ile birlikte Application, Setup ve System kategorilerinden biri seçildiğinde bu bölüm Active olarak görünüyor. Ancak yalnızca Security kategorisini seçip diğer kategorileri kaldırınca, subscription Inactive duruma geçiyor.
