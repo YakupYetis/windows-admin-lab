@@ -21,12 +21,15 @@ CA Certificate Validity: Sertifikaların uzun ömürlü olması için CA Certifi
 
 ### Certificate Template
 ![certtemp](../screenshots/webserver.png)
+Mailde belirtildiği gibi, built-in Web Server template'i doğrudan değiştirmek yerine duplicate edilerek `Lab-WebServer` adıyla yeni bir template oluşturuldu.
 
 ### Computer Certificate Auto-Enrollment GPO
 
 ![certenroll](../screenshots/ceertautoenroll.png)
 
 ![certlist](../screenshots/certlist.png)
+
+Belirtildiği şekilde GPO üzerinden SRV01 makinesinin otomatik olarak sertifika alması sağlandı. 2. resimde görüleceği üzere, test ve denemeler sırasında SRV01 üzerinde 3 adet sertifika oluştuğu görülmektedir.
 
 ### IIS Kurulumu
 Mailde belirtilen şekilde bir IIS kurulumu yapıldı ve DNS üzerinde A kaydı oluşturulup SRV01'e yönlendirildi
